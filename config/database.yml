@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['DB_HOST']%>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
+
+development:
+  <<: *default
+  database: OneBitTwitter_development
+
+test:
+  <<: *default
+  database: OneBitTwitter_test
+
+
+production:
+  <<: *default
+  database: OneBitTwitter_production
