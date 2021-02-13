@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dlchwufzy
+  api_key: '791776244256689'
+  api_secret: bsOuhwOohyQEEEmHzW2Cs0yABBw
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: dlchwufzy
+  api_key: '791776244256689'
+  api_secret: bsOuhwOohyQEEEmHzW2Cs0yABBw
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: dlchwufzy
+  api_key: '791776244256689'
+  api_secret: bsOuhwOohyQEEEmHzW2Cs0yABBw
+  enhance_image_tag: true
+  static_file_support: false

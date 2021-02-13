@@ -17,8 +17,11 @@ gem 'acts_as_votable'#, '~> 0.11.1'
 gem 'searchkick'
 gem 'whenever', :require => false
 gem 'bcrypt'#, '~> 3.1.7'
-gem 'knock'#, '~> 2.1', '>= 2.1.1'
+gem 'knock'#, git: 'https://github.com/nsarno/knock', branch: 'master', ref: '9214cd027422df8dc31eb67c60032fbbf8fc100b'
 gem 'active_model_serializers'
+gem 'carrierwave'
+gem 'carrierwave-base64'
+gem 'cloudinary'
 
 group :test do
   gem 'factory_bot_rails'#, "~> 4.0"
