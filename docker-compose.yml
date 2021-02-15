@@ -12,7 +12,7 @@ services:
       - 5432:5432
 
   redis:
-    image: "redis:3.2-alpine"
+    image: "redis:6.0.10-alpine"
     command: redis-server
     ports:
       - "6379:6379"
@@ -27,6 +27,7 @@ services:
     depends_on:
       - "postgres"
       - "redis"
+      - "elasticsearch"
     build: .
     command: bash start.sh
     ports:
@@ -38,10 +39,40 @@ services:
       - DB_HOST=postgres
       - DB_USER=postgres
       - DB_PASS=postgres
+      - ELASTICSEARCH_URL=elasticsearch:9200
     volumes_from:
-    - box
+      - box
+    stdin_open: true
+    tty: true
+
+  jobs:
+    depends_on:
+      - "postgres"
+      - "redis"
+      - "app"
+      - "elasticsearch"
+    build: .
+    command: bash start_jobs.sh
+    volumes:
+      - .:/onebittwitter
+      - box:/box
+    environment:
+      - BUNDLE_PATH=/box
+      - ELASTICSEARCH_URL=elasticsearch:9200
+    volumes_from:
+      - box
+
+  elasticsearch:
+    image: "elasticsearch:5"
+    ports:
+      - "9200:9200"
+    volumes:
+      - elastic:/usr/share/elasticsearch/data
+    environment:
+      - Des.network.host=0.0.0.0
 
 volumes:
   redis:
   postgres:
   box:
+  elastic:

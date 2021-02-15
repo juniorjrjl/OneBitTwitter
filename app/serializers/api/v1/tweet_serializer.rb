@@ -22,6 +22,6 @@ class Api::V1::TweetSerializer < ActiveModel::Serializer
   end
 
   def liked
-    (current_user)? (current_user.liked? object) : false
+    (defined? current_user)? (current_user.liked? object) : false 
   end
 end

@@ -22,6 +22,7 @@ gem 'active_model_serializers'
 gem 'carrierwave'
 gem 'carrierwave-base64'
 gem 'cloudinary'
+gem 'sidekiq-scheduler'
 
 group :test do
   gem 'factory_bot_rails'#, "~> 4.0"
