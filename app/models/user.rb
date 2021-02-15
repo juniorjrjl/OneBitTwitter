@@ -9,7 +9,7 @@ class User < ApplicationRecord
     acts_as_followable
     acts_as_follower
     has_many :tweets, dependent: :destroy
-    searchkick
+    searchkick word_start: %i[name email]
   
     def search_data
       { name: name, email: email }

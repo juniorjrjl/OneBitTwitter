@@ -5,7 +5,7 @@ class Tweet < ApplicationRecord
   has_many :retweets, class_name: 'Tweet', foreign_key: 'tweet_original_id'
   validates_presence_of :body, :user_id
 
-  searchkick
+  searchkick word_start: %i[body]
   
   def search_data
     { body: body }
