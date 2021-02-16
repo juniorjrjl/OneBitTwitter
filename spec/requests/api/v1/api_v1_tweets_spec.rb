@@ -28,10 +28,21 @@ RSpec.describe "Api::V1::Tweets", type: :request do
         remaining = user.tweets.count - 15
         expect(json.count).to eql(remaining)
       end
- 
-      # Verifique se os tweets que são retweets possuem os tweets originais associados
     end
  
+    context 'Retweets' do
+      let(:user) { create(:user) }
+      let(:tweets_number) { Random.rand(15..25) }
+      let(:first_tweet) { create(:tweet) }
+ 
+      before { tweets_number.times { create(:tweet, user: user, tweet_original: first_tweet) } }
+
+      it 'check is first tweet is associated' do
+        get "/api/v1/tweets?user_id=#{user.id}&page=1", headers: header_with_authentication(user)
+        json.each { |t| expect(t['tweet_original']).to eql(serialized(Api::V1::TweetSerializer, first_tweet)) }
+      end
+    end
+
     context 'User dont exist' do
       let(:user) { create(:user) }
       let(:user_id) { -1 }

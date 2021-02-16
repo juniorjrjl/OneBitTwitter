@@ -9,15 +9,15 @@ gem 'puma', '~> 5.0'
 gem 'rack-cors'
 gem 'rack-attack'
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'redis'#, '~> 3.0'
-gem 'will_paginate'#, '~> 3.1.0'
+gem 'redis'
+gem 'will_paginate'
 gem 'cancancan'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
-gem 'acts_as_votable'#, '~> 0.11.1'
+gem 'acts_as_votable'
 gem 'searchkick'
 gem 'whenever', :require => false
-gem 'bcrypt'#, '~> 3.1.7'
-gem 'knock'#, git: 'https://github.com/nsarno/knock', branch: 'master', ref: '9214cd027422df8dc31eb67c60032fbbf8fc100b'
+gem 'bcrypt'
+gem 'knock'
 gem 'active_model_serializers'
 gem 'carrierwave'
 gem 'carrierwave-base64'
@@ -25,13 +25,13 @@ gem 'cloudinary'
 gem 'sidekiq-scheduler'
 
 group :test do
-  gem 'factory_bot_rails'#, "~> 4.0"
+  gem 'factory_bot_rails'
   gem "ffaker"
   gem 'database_cleaner'
 end
 
 group :development, :test do
-  gem 'rspec-rails'#, '~> 3.5'
+  gem 'rspec-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-json_expectations'
 end
