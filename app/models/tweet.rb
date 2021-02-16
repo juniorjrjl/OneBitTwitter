@@ -1,4 +1,5 @@
 class Tweet < ApplicationRecord
+  mount_base64_uploader :photo, PhotoUploader
   belongs_to :user
   acts_as_votable
   belongs_to :tweet_original, class_name: 'Tweet', required: false
